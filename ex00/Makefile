@@ -1,6 +1,6 @@
-NAME = ex00
+NAME = Megaphone
 
-SRC = ex_00.cpp megaphone.cpp
+SRC = $(wildcard *.cpp)
 OBJ = $(SRC:.cpp=.o)
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
