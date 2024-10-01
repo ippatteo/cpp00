@@ -1,14 +1,16 @@
 #include "phonebook.hpp"
-#include <iostream>
 
 int main ()
 {
     std::string command;
     Phonebook phonebook;
     int N = 0;
+	std::cout << "ADD to add a contact\nSEARCH to look fore a contact\nEXIT to leave the phonebook\n";
    while (true)
 	{
-	    std::cout << "Enter command\nADD to add a contact\nSEARCH to look fore a contact\nEXIT to leave the phonebook\n>> "<< std::endl;
+		if (std::cin.eof())
+                break;
+	    std::cout << "enter command>> ";
         std::getline(std::cin, command);
         if (command == "ADD")
         {
@@ -18,7 +20,8 @@ int main ()
         }
         if (command == "SEARCH")
         {
-            std::getline(std::cin, command);
+            phonebook.Display_all();
+
         }
         if (command == "EXIT")
             break;

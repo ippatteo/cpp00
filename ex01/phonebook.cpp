@@ -14,6 +14,8 @@ void Phonebook::add_field(int N)
         while (contacts[N].Last_Name.empty())
         {
             std::cout << "error: empty field!" << std::endl;
+			if (std::cin.eof())
+				exit(0);
             std::getline(std::cin, commandone);
             contacts[N].Last_Name = commandone;
         }
@@ -38,43 +40,63 @@ void Phonebook::add_field(int N)
 
         ScaleContacs(N);
         std::cout << "First Name : ";
+		if (std::cin.eof())
+				exit(0);
         std::getline(std::cin, First);
         while (First.empty())
         {
             std::cout << "error: empty field!" << std::endl;
             std::cout << "First Name : ";
+			if (std::cin.eof())
+				exit(0);
             std::getline(std::cin, First);
         }
         std::cout << "Last Name : ";
+		if (std::cin.eof())
+				exit(0);
         std::getline(std::cin, Last);
         while (Last.empty())
         {
             std::cout << "error: empty field!" << std::endl;
             std::cout << "Last Name : ";
+			if (std::cin.eof())
+				exit(0);
             std::getline(std::cin, Last);
         }
         std::cout << "Nickname : ";
+		if (std::cin.eof())
+				exit(0);
         std::getline(std::cin, Nick);
         while (Nick.empty())
         {
             std::cout << "error: empty field!" << std::endl;
             std::cout << "Nickname : ";
+			if (std::cin.eof())
+				exit(0);
             std::getline(std::cin, Nick);
         }
         std::cout << "Phone Number : ";
+		if (std::cin.eof())
+				exit(0);
         std::getline(std::cin, Phone);
         while (Phone.empty())
         {
             std::cout << "error: empty field!" << std::endl;
             std::cout << "Phone Number :";
+			if (std::cin.eof())
+				exit(0);
             std::getline(std::cin, Phone);
         }
         std::cout << "Darkest Secret : ";
+		if (std::cin.eof())
+				exit(0);
         std::getline(std::cin, Darkest);
         while (Darkest.empty())
         {
             std::cout << "error: empty field!" << std::endl;
             std::cout << "Darkest Secret : ";
+			if (std::cin.eof())
+				exit(0);
             std::getline(std::cin, Darkest);
         }
        contacts[N].First_Name = First;
@@ -109,6 +131,8 @@ void Phonebook::add_field(int N)
     {
         std::cout << "Choose index: ";
         std::string index;
+		if (std::cin.eof())
+				exit(0);
         std::getline(std::cin, index);
         if (ottoi(index) < 8 && !contacts[ottoi(index)].First_Name.empty())
         {
@@ -127,12 +151,12 @@ void Phonebook::add_field(int N)
     {
        if (field.size() > 10)
        {
-            std::cout << field.substr(0, 8) << ".";
+            std::cout << field.substr(0, 9) << ".";
        }
        else
        {
             int i = 0;
-            while  ((i + field.size()) < 11)
+            while  ((i + field.size()) < 10)
             {
                  std::cout << " ";
                  i++;
@@ -149,7 +173,7 @@ void Phonebook::add_field(int N)
             return ;
         }
         int i = 0;
-        std::cout << "---------------------------------------------\n|                CONTATCS LIST              |\n---------------------------------------------\n";
+        std::cout << "----------------------------------------------\n|               CONTATCS LIST                |\n----------------------------------------------\n";
 
         while (i < 8 && !(contacts[i].First_Name.empty()))
         {
@@ -165,8 +189,10 @@ void Phonebook::add_field(int N)
             display_field(contacts[i].First_Name);
             display_field(contacts[i].Last_Name);
             display_field(contacts[i].Nickname);
-            display_field(contacts[i].Phone_Number);
-            display_field(contacts[i].Darkest_Secret);
+            //display_field(contacts[i].Phone_Number);
+            //display_field(contacts[i].Darkest_Secret);
+			std::cout << "\n";
+			break;
         }
         while(!search());
 
