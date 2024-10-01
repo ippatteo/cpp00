@@ -14,9 +14,10 @@ int main ()
         std::getline(std::cin, command);
         if (command == "ADD")
         {
-            phonebook.Add(N++);
+            phonebook.Add(N);
+			N++;
             if (N >= 8)
-                N = 7;
+                N = 0;
         }
         if (command == "SEARCH")
         {

@@ -27,6 +27,10 @@ void Phonebook::add_field(int N)
         while (i < 7 && N == 7)
         {
             contacts[i].First_Name = contacts[i + 1].First_Name;
+			contacts[i].Last_Name = contacts[i + 1].Last_Name;
+			contacts[i].Nickname = contacts[i + 1].Nickname;
+			contacts[i].Phone_Number = contacts[i + 1].Phone_Number;
+			contacts[i].Darkest_Secret = contacts[i + 1].Darkest_Secret;
 			i++;
         }
     }
@@ -38,8 +42,8 @@ void Phonebook::add_field(int N)
         std::string Phone;
         std::string Darkest;
 
-        ScaleContacs(N);
-        std::cout << "First Name : ";
+        //ScaleContacs(N);
+        std::cout << N << "First Name : ";
 		if (std::cin.eof())
 				exit(0);
         std::getline(std::cin, First);
@@ -134,7 +138,7 @@ void Phonebook::add_field(int N)
 		if (std::cin.eof())
 				exit(0);
         std::getline(std::cin, index);
-        if (ottoi(index) < 8 && !contacts[ottoi(index)].First_Name.empty())
+        if (ottoi(index) != 8 && !contacts[ottoi(index)].First_Name.empty())
         {
              std::cout << contacts[ottoi(index)].First_Name << std::endl;
              std::cout << contacts[ottoi(index)].Last_Name << std::endl;
@@ -192,7 +196,7 @@ void Phonebook::add_field(int N)
             //display_field(contacts[i].Phone_Number);
             //display_field(contacts[i].Darkest_Secret);
 			std::cout << "\n";
-			break;
+			i++;
         }
         while(!search());
 
