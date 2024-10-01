@@ -8,12 +8,6 @@ class Phonebook
 	Phonebook();
 	~Phonebook();
     Contact contacts[8];
-    void AddFirstName(int N);
-    void AddNickame(int N);
-	void AddFirstName(int N);
-	void AddFirstName(int N);
-	void AddFirstName(int N);
-    void PhoneNumber(int N);
     void add_field(int N);
     void ScaleContacs(int N);
     void Add(int N);

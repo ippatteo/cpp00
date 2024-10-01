@@ -8,47 +8,7 @@ Phonebook::Phonebook()
 Phonebook::~Phonebook()
 {
 }
-void Phonebook::AddFirstName(int N)
-    {
-        std::string commandone;
-        while (contacts[N].First_Name.empty())
-        {
-            std::cout << "error: empty field!" << std::endl;
-            std::getline(std::cin, commandone);
-            contacts[N].First_Name = commandone;
-        }
-    }
-    void Phonebook::AddLastName(int N)
-    {
-        std::string commandone;
-        while (contacts[N].Last_Name.empty())
-        {
-            std::cout << "error: empty field!" << std::endl;
-            std::getline(std::cin, commandone);
-            contacts[N].Last_Name = commandone;
-        }
-    }
-    void Phonebook::AddNickame(int N)
-    {
-        std::string commandone;
-        while (contacts[N].Last_Name.empty())
-        {
-            std::cout << "error: empty field!" << std::endl;
-            std::getline(std::cin, commandone);
-            contacts[N].Last_Name = commandone;
-        }
-    }
-    void Phonebook::PhoneNumber(int N)
-    {
-        std::string commandone;
-        while (contacts[N].Last_Name.empty())
-        {
-            std::cout << "error: empty field!" << std::endl;
-            std::getline(std::cin, commandone);
-            contacts[N].Last_Name = commandone;
-        }
-    }
-    void Phonebook::add_field(int N)
+void Phonebook::add_field(int N)
     {
         std::string commandone;
         while (contacts[N].Last_Name.empty())
@@ -64,7 +24,8 @@ void Phonebook::AddFirstName(int N)
         i = 0;
         while (i < 7 && N == 7)
         {
-            contacts[i].First_Name = contacts[++i].First_Name;
+            contacts[i].First_Name = contacts[i + 1].First_Name;
+			i++;
         }
     }
     void Phonebook::Add(int N)
