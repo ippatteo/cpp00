@@ -1,80 +1,73 @@
-#include <iostream>
+#include "phonebook.hpp"
 /**/
-class Contacts
-{
-    public:
-    std::string First_Name;
-    std::string Last_Name;
-    std::string Nickname;
-    std::string Phone_Number;
-    std::string Darkest_Secret;
 
-};
-
-class Phonebook
+Phonebook::Phonebook()
 {
-    public:
-    Contacts Contact[8];
-    void AddFirstName(int N)
+}
+
+Phonebook::~Phonebook()
+{
+}
+void Phonebook::AddFirstName(int N)
     {
-        std::string commandone;       
-        while (Contact[N].First_Name.empty())
+        std::string commandone;
+        while (contacts[N].First_Name.empty())
         {
             std::cout << "error: empty field!" << std::endl;
             std::getline(std::cin, commandone);
-            Contact[N].First_Name = commandone;
+            contacts[N].First_Name = commandone;
         }
     }
-    void AddLastName(int N)
+    void Phonebook::AddLastName(int N)
     {
-        std::string commandone;       
-        while (Contact[N].Last_Name.empty())
+        std::string commandone;
+        while (contacts[N].Last_Name.empty())
         {
             std::cout << "error: empty field!" << std::endl;
             std::getline(std::cin, commandone);
-            Contact[N].Last_Name = commandone;
+            contacts[N].Last_Name = commandone;
         }
     }
-    void AddNickame(int N)
+    void Phonebook::AddNickame(int N)
     {
-        std::string commandone;       
-        while (Contact[N].Last_Name.empty())
+        std::string commandone;
+        while (contacts[N].Last_Name.empty())
         {
             std::cout << "error: empty field!" << std::endl;
             std::getline(std::cin, commandone);
-            Contact[N].Last_Name = commandone;
+            contacts[N].Last_Name = commandone;
         }
     }
-    void PhoneNumber(int N)
+    void Phonebook::PhoneNumber(int N)
     {
-        std::string commandone;       
-        while (Contact[N].Last_Name.empty())
+        std::string commandone;
+        while (contacts[N].Last_Name.empty())
         {
             std::cout << "error: empty field!" << std::endl;
             std::getline(std::cin, commandone);
-            Contact[N].Last_Name = commandone;
+            contacts[N].Last_Name = commandone;
         }
     }
-    void add_field(int N)
+    void Phonebook::add_field(int N)
     {
-        std::string commandone;       
-        while (Contact[N].Last_Name.empty())
+        std::string commandone;
+        while (contacts[N].Last_Name.empty())
         {
             std::cout << "error: empty field!" << std::endl;
             std::getline(std::cin, commandone);
-            Contact[N].Last_Name = commandone;
+            contacts[N].Last_Name = commandone;
         }
     }
-    void ScaleContacs(int N)
+    void Phonebook::ScaleContacs(int N)
     {
         int i;
         i = 0;
         while (i < 7 && N == 7)
         {
-            Contact[i].First_Name = Contact[++i].First_Name;
+            contacts[i].First_Name = contacts[++i].First_Name;
         }
     }
-    void Add(int N)
+    void Phonebook::Add(int N)
     {
         std::string First;
         std::string Last;
@@ -123,14 +116,14 @@ class Phonebook
             std::cout << "Darkest Secret : ";
             std::getline(std::cin, Darkest);
         }
-       Contact[N].First_Name = First;
-       Contact[N].Last_Name = Last;
-       Contact[N].Nickname = Nick;
-       Contact[N].Phone_Number = Phone;
-       Contact[N].Darkest_Secret = Darkest;
+       contacts[N].First_Name = First;
+       contacts[N].Last_Name = Last;
+       contacts[N].Nickname = Nick;
+       contacts[N].Phone_Number = Phone;
+       contacts[N].Darkest_Secret = Darkest;
     }
     //convert string to number, on any case of error return 8
-    int ottoi(std::string number)
+    int Phonebook::ottoi(std::string number)
     {
         if (number == "1")
             return 0;
@@ -151,25 +144,25 @@ class Phonebook
         return 8;
     }
     //put index, return 0 invalid, 1 valid ;
-    int search()
+    int Phonebook::search()
     {
         std::cout << "Choose index: ";
         std::string index;
         std::getline(std::cin, index);
-        if (ottoi(index) < 8 && !Contact[ottoi(index)].First_Name.empty())
+        if (ottoi(index) < 8 && !contacts[ottoi(index)].First_Name.empty())
         {
-             std::cout << Contact[ottoi(index)].First_Name << std::endl;
-             std::cout << Contact[ottoi(index)].Last_Name << std::endl;
-             std::cout << Contact[ottoi(index)].Nickname << std::endl;
-             std::cout << Contact[ottoi(index)].Phone_Number << std::endl;
-             std::cout << Contact[ottoi(index)].Darkest_Secret << std::endl;
+             std::cout << contacts[ottoi(index)].First_Name << std::endl;
+             std::cout << contacts[ottoi(index)].Last_Name << std::endl;
+             std::cout << contacts[ottoi(index)].Nickname << std::endl;
+             std::cout << contacts[ottoi(index)].Phone_Number << std::endl;
+             std::cout << contacts[ottoi(index)].Darkest_Secret << std::endl;
              return 1;
         }
-        else 
+        else
             std::cout << "invalid index!" << std::endl;
         return 0;
     }
-    void display_field(std::string field)
+    void Phonebook::display_field(std::string field)
     {
        if (field.size() > 10)
        {
@@ -187,17 +180,17 @@ class Phonebook
        }
         std::cout << "|";
     }
-    void Display_all()
+    void Phonebook::Display_all()
     {
-        if (Contact[0].First_Name.empty())
+        if (contacts[0].First_Name.empty())
         {
-            std::cout << "No contact yet!" << std::endl;
+            std::cout << "No contacts yet!" << std::endl;
             return ;
         }
         int i = 0;
         std::cout << "---------------------------------------------\n|                CONTATCS LIST              |\n---------------------------------------------\n";
-        
-        while (i < 8 && !(Contact[i].First_Name.empty()))
+
+        while (i < 8 && !(contacts[i].First_Name.empty()))
         {
             std::cout << "|";
             int z = 0;
@@ -208,40 +201,12 @@ class Phonebook
             }
             std::cout << i + 1;
             std::cout << "|";
-            display_field(Contact[i].First_Name);
-            display_field(Contact[i].Last_Name);
-            display_field(Contact[i].Nickname);
-            display_field(Contact[i].Phone_Number);
-            display_field(Contact[i].Darkest_Secret);
+            display_field(contacts[i].First_Name);
+            display_field(contacts[i].Last_Name);
+            display_field(contacts[i].Nickname);
+            display_field(contacts[i].Phone_Number);
+            display_field(contacts[i].Darkest_Secret);
         }
         while(!search());
 
     }
-};
-
-
-int main (int argc, char **argv)
-{
-    std::string command;
-    Phonebook phonebook;
-    int N = 0;
-   while (true)
-	{
-	    std::cout << "Enter command: "<< std::endl;
-        std::getline(std::cin, command);
-        if (command == "ADD")
-        {
-            phonebook.Add(N++);
-            if (N >= 8)
-                N = 7;
-        }
-        if (command == "SEARCH")
-        {
-            std::getline(std::cin, command);
-        }
-        if (command == "exit")
-            break;
-    }
-    //std::cout << "\n" << std::endl;
-    return 0;
-}
