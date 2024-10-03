@@ -8,43 +8,43 @@ Contact::~Contact()
 {
 }
 
-void setFirst(std::string str)
+void Contact::setFirst(std::string str)
 {
-	Contact.F = First_Name;
+	First_Name = str;
 }
-void setLast(std::string str)
+void Contact::setLast(std::string str)
 {
-
+    Last_Name = str;
 }
-void setNick(std::string str)
+void Contact::setNick(std::string str)
 {
-
+    Nickname = str;
 }
-void setPhone(std::string str)
+void Contact::setPhone(std::string str)
 {
-
+    Phone_Number = str;
 }
-void setDark(std::string str)
+void Contact::setDark(std::string str)
 {
-
+    Darkest_Secret = str;
 }
-std::string getFirst()
+std::string Contact::getFirst()
 {
-
+    return First_Name;
 }
-std::string getLast()
+std::string Contact::getLast()
 {
-
+    return Last_Name;
 }
-std::string getNick()
+std::string Contact::getNick()
 {
-
+    return Nickname;
 }
-std::string getPhone()
+std::string Contact::getPhone()
 {
-
+    return Phone_Number;
 }
-std::string getDark()
+std::string Contact::getDark()
 {
-
+    return Darkest_Secret;
 }

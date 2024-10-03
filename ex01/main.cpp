@@ -19,13 +19,16 @@ int main ()
             if (N >= 8)
                 N = 0;
         }
-        if (command == "SEARCH")
+        else if (command == "SEARCH")
         {
             phonebook.Display_all();
 
         }
-        if (command == "EXIT")
+        else if (command == "EXIT")
             break;
+        else
+            std::cout << "Wrong command!" << std::endl;
+
     }
     //std::cout << "\n" << std::endl;
     return 0;

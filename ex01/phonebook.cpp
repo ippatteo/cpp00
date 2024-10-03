@@ -11,27 +11,13 @@ Phonebook::~Phonebook()
 void Phonebook::add_field(int N)
     {
         std::string commandone;
-        while (contacts[N].Last_Name.empty())
+        while (contacts[N].getFirst().empty())
         {
             std::cout << "error: empty field!" << std::endl;
 			if (std::cin.eof())
 				exit(0);
             std::getline(std::cin, commandone);
-            contacts[N].Last_Name = commandone;
-        }
-    }
-    void Phonebook::ScaleContacs(int N)
-    {
-        int i;
-        i = 0;
-        while (i < 7 && N == 7)
-        {
-            contacts[i].First_Name = contacts[i + 1].First_Name;
-			contacts[i].Last_Name = contacts[i + 1].Last_Name;
-			contacts[i].Nickname = contacts[i + 1].Nickname;
-			contacts[i].Phone_Number = contacts[i + 1].Phone_Number;
-			contacts[i].Darkest_Secret = contacts[i + 1].Darkest_Secret;
-			i++;
+            contacts[N].setLast(commandone);
         }
     }
     void Phonebook::Add(int N)
@@ -103,11 +89,11 @@ void Phonebook::add_field(int N)
 				exit(0);
             std::getline(std::cin, Darkest);
         }
-       contacts[N].First_Name = First;
-       contacts[N].Last_Name = Last;
-       contacts[N].Nickname = Nick;
-       contacts[N].Phone_Number = Phone;
-       contacts[N].Darkest_Secret = Darkest;
+        contacts[N].setFirst(First);
+        contacts[N].setLast(Last);
+        contacts[N].setNick(Nick);
+        contacts[N].setPhone(Phone);
+       contacts[N].setDark(Darkest);
     }
     //convert string to number, on any case of error return 8
     int Phonebook::ottoi(std::string number)
@@ -137,14 +123,14 @@ void Phonebook::add_field(int N)
         std::string index;
 		if (std::cin.eof())
 				exit(0);
-        std::getline(std::cin, index);
-        if (ottoi(index) != 8 && !contacts[ottoi(index)].First_Name.empty())
+        std::getline(std::cin , index);
+        if (ottoi(index) != 8 && !contacts[ottoi(index)].getFirst().empty())
         {
-             std::cout << contacts[ottoi(index)].First_Name << std::endl;
-             std::cout << contacts[ottoi(index)].Last_Name << std::endl;
-             std::cout << contacts[ottoi(index)].Nickname << std::endl;
-             std::cout << contacts[ottoi(index)].Phone_Number << std::endl;
-             std::cout << contacts[ottoi(index)].Darkest_Secret << std::endl;
+             std::cout << contacts[ottoi(index)].getFirst() << std::endl;
+             std::cout << contacts[ottoi(index)].getLast() << std::endl;
+             std::cout << contacts[ottoi(index)].getNick() << std::endl;
+             std::cout << contacts[ottoi(index)].getPhone() << std::endl;
+             std::cout << contacts[ottoi(index)].getDark() << std::endl;
              return 1;
         }
         else
@@ -171,7 +157,7 @@ void Phonebook::add_field(int N)
     }
     void Phonebook::Display_all()
     {
-        if (contacts[0].First_Name.empty())
+        if (contacts[0].getFirst().empty())
         {
             std::cout << "No contacts yet!" << std::endl;
             return ;
@@ -179,7 +165,7 @@ void Phonebook::add_field(int N)
         int i = 0;
         std::cout << "---------------------------------------------\n|               CONTATCS LIST               |\n---------------------------------------------\n";
 
-        while (i < 8 && !(contacts[i].First_Name.empty()))
+        while (i < 8 && !(contacts[i].getFirst().empty()))
         {
             std::cout << "|";
             int z = 0;
@@ -190,9 +176,9 @@ void Phonebook::add_field(int N)
             }
             std::cout << i + 1;
             std::cout << "|";
-            display_field(contacts[i].First_Name);
-            display_field(contacts[i].Last_Name);
-            display_field(contacts[i].Nickname);
+            display_field(contacts[i].getFirst());
+            display_field(contacts[i].getLast());
+            display_field(contacts[i].getNick());
             //display_field(contacts[i].Phone_Number);
             //display_field(contacts[i].Darkest_Secret);
 			std::cout << "\n";
