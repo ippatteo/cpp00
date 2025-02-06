@@ -29,7 +29,7 @@ void Phonebook::add_field(int N)
         std::string Darkest;
 
         //ScaleContacs(N);
-        std::cout << N << "First Name : ";
+        std::cout << "First Name : ";
 		if (std::cin.eof())
 				exit(0);
         std::getline(std::cin, First);
@@ -119,10 +119,10 @@ void Phonebook::add_field(int N)
     //put index, return 0 invalid, 1 valid ;
     int Phonebook::search()
     {
-        std::cout << "Choose index: ";
-        std::string index;
+		std::string index;
 		if (std::cin.eof())
 				exit(0);
+        std::cout << "Choose index: ";
         std::getline(std::cin , index);
         if (ottoi(index) != 8 && !contacts[ottoi(index)].getFirst().empty())
         {
